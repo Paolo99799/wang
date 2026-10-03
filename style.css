@@ -58,4 +58,42 @@ h2 span{color:#b31b1b}
 .ctl .p{border-color:#8a1b1b}.vol input{accent-color:#c0302c}
 ::-webkit-scrollbar{width:7px}::-webkit-scrollbar-thumb{background:#6b1414;border-radius:4px}::-webkit-scrollbar-track{background:#000}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+.grp {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
 
+/ 2. บังคับข้อความภายในกล่องไม่ให้ตกบรรทัด /
+.c div {
+    white-space: nowrap;
+}
+
+/ 3. ยกเว้นเฉพาะกลุ่มแรก (Founders) ให้แสดงผลแค่ 1 กล่อง และชิดซ้ายตามปกติ /
+#list .grp:first-of-type {
+    display: flex;
+    justify-content: flex-start;
+}
+
+/ 4. กำหนดขนาดความกว้างของกล่อง Founders ให้พอดีกับ 1 คอลัมน์ */
+#list .grp:first-of-type .c {
+    width: 100%;
+}
+/* ป้องกันข้อความตกบรรทัดและปรับช่องว่างให้พอดีกับ 3 คอลัมน์ */
+.c div {
+    white-space: nowrap;
+}
+
+.c {
+    gap: 12px; 
+    padding: 10px 15px;
+}
+.dir{text-align:center;padding:24px 16px}
+.dir-sub{letter-spacing:.3em;color:#888;font-size:14px}
+.dir-title{color:#fff;font-size:42px;letter-spacing:.15em;margin:12px 0 24px}
+.dir-search{width:100%;max-width:700px;padding:16px 20px;border-radius:18px;
+  border:1px solid #333;background:#111;color:#fff;font-size:16px}
+.dir-tabs{margin-top:14px;display:flex;gap:10px;justify-content:center}
+.dir-tabs button{padding:12px 22px;border-radius:16px;border:1px solid #333;
+  background:#111;color:#aaa;cursor:pointer}
+.dir-tabs button.on{border:2px solid #fff;color:#fff}

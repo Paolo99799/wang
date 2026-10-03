@@ -1,7 +1,7 @@
 var G=[
  {t:'FOUNDERS',cls:'f',role:'👑 FOUNDER',m:[{n:'Paolo Wang',img:'images/paolo.jpg',u:'https://www.facebook.com/share/18Pj4PQPcR/'}]},
  {t:'LEADERS',cls:'l',role:'🛡️ LEADER',m:[{n:'Meturr Wang',img:'images/meturr.jpg',u:'https://www.facebook.com/share/1EqZ9jec1Z/'},{n:'Dylan Wang',img:'images/dylan.jpg',u:'https://www.facebook.com/share/18uEb65A7z/'},{n:'Fahad Wang',img:'images/fahad.jpg',u:'https://www.facebook.com/share/1EL2qPF716/'}]},
- {t:'MEMBERS',cls:'s',role:'♡ MEMBER',m:[{n:'Tuayfuu Wang',img:'images/tuayfuu.jpg',u:'https://www.facebook.com/share/19aJG4RdBM/'},{n:'White Wang',img:'images/white.jpg',u:'https://www.facebook.com/share/19sFbojgpe/'},{n:'ชื่อสมาชิก 3',u:'#'},{n:'ชื่อสมาชิกคนที่ 3',u:'#'}]}
+ {t:'MEMBERS',cls:'s',role:'♡ MEMBER',m:[{n:'Tuayfuu Wang',img:'images/tuayfuu.jpg',u:'https://www.facebook.com/share/19aJG4RdBM/'},{n:'White Wang',img:'images/white.jpg',u:'https://www.facebook.com/share/19sFbojgpe/'},{n:'Yibpy Wang',img:'images/yibpy.jpg',u:'https://www.facebook.com/share/18wXJRM2fx/#'},{n:'Billy Wang',img:'images/billy.jpg',u:'https://www.facebook.com/share/19guExQHbT/'}]},
 ];
 function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML}
 document.getElementById('list').innerHTML=G.map(function(g){
@@ -53,3 +53,40 @@ document.addEventListener('pointerdown',autoStart,true);document.addEventListene
   size();addEventListener('resize',size);
   if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))tick();
 })();
+function addSearch(){
+  const list = document.getElementById('list');
+  if (!list || list.querySelector('.dir')) return;
+
+  const dir = document.createElement('div');
+  dir.className = 'dir';
+  dir.innerHTML = `
+    <div class="dir-sub">♡ MEMBER WANG ♡</div>
+    <h1 class="dir-title">ตระกูลหวัง</h1>
+    <input id="q" class="dir-search" placeholder="Search members...">
+    <div class="dir-tabs">
+      <button class="on" data-f="all">ALL</button>
+      <button data-f="wang">WANG</button>
+    </div>`;
+  list.prepend(dir);
+
+  const q = dir.querySelector('#q');
+  function filter(){
+    const t = q.value.toLowerCase();
+    const f = dir.querySelector('.on').dataset.f;
+    list.querySelectorAll('a').forEach(a=>{
+      const card = a.parentElement.closest('div') || a;
+      const n = card.textContent.toLowerCase();
+      card.style.display = (n.includes(t) && (f==='all' || n.includes(f))) ? '' : 'none';
+    });
+  }
+  q.addEventListener('input', filter);
+  dir.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+    dir.querySelector('.on').classList.remove('on');
+    b.classList.add('on'); filter();
+  });
+}
+
+// ตรวจทุกครั้งที่ #list ถูกเขียนใหม่
+new MutationObserver(addSearch)
+  .observe(document.getElementById('list'), {childList:true});
+addSearch();
