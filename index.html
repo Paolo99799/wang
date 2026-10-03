@@ -35,14 +35,46 @@
         </div>
 
     </main>
-<audio id="bgMusic" loop>
-    <source src="music/bgmusic.mp3" type="audio/mpeg">
-</audio>
+<div class="music-player">
 
-<button id="musicButton" class="music-button">
-    🎵 เปิดเพลง
-</button>
-    <script src="script.js"></script>
+    <div class="music-cover">
+        <img src="images/music-cover.jpg" alt="Music Cover">
+    </div>
+
+    <div class="music-info">
+        <div class="music-title">คนตาย</div>
+        <div class="music-artist">YOUNGOHM</div>
+    </div>
+
+    <div class="music-controls">
+
+        <button id="prevBtn">↶</button>
+
+        <button id="playBtn" class="play-btn">▶</button>
+
+        <button id="nextBtn">↷</button>
+
+        <button id="muteBtn">♬</button>
+
+    </div>
+
+    <div class="volume-area">
+        <span>🔊</span>
+        <input
+            type="range"
+            id="volumeSlider"
+            min="0"
+            max="1"
+            step="0.01"
+            value="0.45"
+        >
+    </div>
+
+</div>
+
+<audio id="bgMusic" src="music/bgmusic.mp3"></audio>
+
+<script src="script.js"></script>
 
 </body>
 </html>

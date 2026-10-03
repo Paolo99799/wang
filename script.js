@@ -30,34 +30,37 @@ function searchMembers() {
 
 }
 const music = document.getElementById("bgMusic");
-const musicButton = document.getElementById("musicButton");
 
 if (music) {
 
-    // พยายามเปิดเพลงทันที
-    music.volume = 0.5;
+    const savedTime = localStorage.getItem("musicTime");
+    const wasPlaying = localStorage.getItem("musicPlaying") === "true";
 
-    music.play().catch(() => {
-        console.log("Browser blocked autoplay");
+    music.volume = 0.45;
+
+    // จำตำแหน่งเพลง
+    if (savedTime) {
+        music.currentTime = parseFloat(savedTime);
+    }
+
+    // บันทึกตำแหน่งทุก 1 วินาที
+    music.addEventListener("timeupdate", () => {
+        localStorage.setItem("musicTime", music.currentTime);
     });
 
-    if (musicButton) {
+    // จำสถานะเล่น/หยุด
+    music.addEventListener("play", () => {
+        localStorage.setItem("musicPlaying", "true");
+    });
 
-        musicButton.addEventListener("click", function () {
+    music.addEventListener("pause", () => {
+        localStorage.setItem("musicPlaying", "false");
+    });
 
-            if (music.paused) {
-
-                music.play();
-                musicButton.textContent = "🔊 เพลง";
-
-            } else {
-
-                music.pause();
-                musicButton.textContent = "🔇 ปิดเพลง";
-
-            }
-
+    // พยายามเล่นต่อ
+    if (wasPlaying) {
+        music.play().catch(() => {
+            console.log("Browser blocked autoplay");
         });
-
     }
 }
