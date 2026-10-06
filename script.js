@@ -1,7 +1,7 @@
 var G=[
  {t:'FOUNDERS',cls:'f',role:'👑 FOUNDER',m:[{n:'Paolo Wang',img:'images/paolo.jpg',u:'https://www.facebook.com/share/18Pj4PQPcR/'}]},
  {t:'LEADERS',cls:'l',role:'🛡️ LEADER',m:[{n:'Meturr Wang',img:'images/meturr.jpg',u:'https://www.facebook.com/share/1EqZ9jec1Z/'},{n:'Dylan Wang',img:'images/dylan.jpg',u:'https://www.facebook.com/share/18uEb65A7z/'},{n:'Fahad Wang',img:'images/fahad.jpg',u:'https://www.facebook.com/share/1EL2qPF716/'}]},
- {t:'MEMBERS',cls:'s',role:'♡ MEMBER',m:[{n:'Tuayfuu Wang',img:'images/tuayfuu.jpg',u:'https://www.facebook.com/share/19aJG4RdBM/'},{n:'White Wang',img:'images/white.jpg',u:'https://www.facebook.com/share/19sFbojgpe/'},{n:'Yibpy Wang',img:'images/yibpy.jpg',u:'https://www.facebook.com/share/18wXJRM2fx/#'},{n:'Billy Wang',img:'images/billy.jpg',u:'https://www.facebook.com/share/19guExQHbT/'}]},
+ {t:'MEMBERS',cls:'s',role:'♡ MEMBER',m:[{n:'Tuayfuu Wang',img:'images/tuayfuu.jpg',u:'https://www.facebook.com/share/19aJG4RdBM/'},{n:'White Wang',img:'images/white.jpg',u:'https://www.facebook.com/share/19sFbojgpe/'},{n:'Yibpy Wang',img:'images/yibpy.jpg',u:'https://www.facebook.com/share/18wXJRM2fx/#'},{n:'Billy Wang',img:'images/billy.jpg',u:'https://www.facebook.com/share/19guExQHbT/'},{n:'Lai Wang',img:'images/lai.jpg',u:'https://www.facebook.com/share/1JnwqUF9vX/'}]},
 ];
 function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML}
 document.getElementById('list').innerHTML=G.map(function(g){
